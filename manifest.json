@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Quick Open",
+  "version": "1.0",
+  "description": "ワンクリックでDiscordを開く便利なショートカット拡張",
+  "icons": {
+    "16": "unlocked.png",
+    "48": "unlocked.png",
+    "128": "unlocked.png"
+  },
+  "action": {
+    "default_title": "Discordを開く"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://discord.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://discord.com/*"
+  ]
+}

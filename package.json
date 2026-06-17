@@ -1,0 +1,17 @@
+{
+  "name": "discord-token-extractor-test",
+  "version": "1.0.0",
+  "description": "CTF: Discord Token Extractor 自動検証",
+  "main": "test-extension.js",
+  "scripts": {
+    "test": "node test-extension.js",
+    "test:watch": "nodemon test-extension.js"
+  },
+  "keywords": ["ctf", "discord", "chrome-extension", "test"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "puppeteer": "^22.0.0",
+    "nodemon": "^3.0.0"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+*.log
+.DS_Store
+.env
+config.json
+webhook_url.txt
+.git/
