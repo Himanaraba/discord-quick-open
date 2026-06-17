@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: system-ui;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #5865F2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #4752C4;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+    .status.success {
+      background-color: #28a745;
+      color: white;
+      display: block;
+    }
+    .status.error {
+      background-color: #dc3545;
+      color: white;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Discord Quick Open - Setup</h1>
+
+  <div>
+    <label for="webhook">Webhook URL:</label>
+    <input type="password" id="webhook" placeholder="https://discordapp.com/api/webhooks/...">
+    <button onclick="saveWebhook()">Save</button>
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="setup.js"></script>
+</body>
+</html>
